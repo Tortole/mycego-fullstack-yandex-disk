@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "mycego-fullstack-yandex-disk"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "util_tools" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "^5.1.1"
+django-environ = "^0.11.2"
+requests = "^2.32.3"
+black = "24.3.0"
+flake8 = "7.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "3.7.0"
+black = "24.3.0"
+flake8 = "7.0.0"
+flake8-annotations = "^3.1.1"
+
+[tool.poetry.scripts]
+m = "util_tools.scripts:manager"
+t = "util_tools.scripts:tailwind"
+full_migrate = "util_tools.scripts:full_migrate"
+lint = "util_tools.scripts:flake8"
+format = "util_tools.scripts:black"
+expreq = "util_tools.scripts:export_requirements"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

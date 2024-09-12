@@ -1,0 +1,44 @@
+<!-- prettier-ignore -->
+{% extends "base/base.html" %}
+
+{% block content %}
+<form
+    class="flex w-full flex-col items-center justify-center gap-3 py-10"
+    method="post"
+>
+    {% if form.errors %}
+    <span>Неправильный логин или пароль. Попробуйте снова.</span>
+    {% comment %}
+    <!-- prettier-ignore -->
+    {% endcomment %}
+    {% endif %}
+    
+    {% csrf_token %}
+
+    <div class="flex flex-row items-center border-2 border-blue-main">
+        <label for="id_username" class="w-40 bg-blue-main px-2 py-1 text-center"
+            >Имя пользователя</label
+        >
+        {{ form.username }}
+    </div>
+    <div class="flex flex-row items-center border-2 border-blue-main">
+        <label for="id_password" class="w-40 bg-blue-main px-2 py-1 text-center"
+            >Пароль</label
+        >
+        {{ form.password }}
+    </div>
+
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input
+        class="w-20 bg-blue-btn-default p-1 hover:bg-blue-btn-hover active:bg-blue-btn-onclick"
+        type="submit"
+        value="Вход"
+    />
+
+    <a
+        class="text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+        href="{% url 'registration' %}"
+        >Зарегистрироваться</a
+    >
+</form>
+{% endblock %}
